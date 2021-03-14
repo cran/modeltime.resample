@@ -1,18 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# modeltime.resample <img src='man/figures/logo.png' align="right" height="138.5" />
+# modeltime.resample <img src='man/figures/logo-modeltime-resample.png' align="right" height="138.5" />
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.com/business-science/modeltime.resample.svg?branch=master)](https://travis-ci.com/business-science/modeltime.resample)
-[![Codecov test
-coverage](https://codecov.io/gh/business-science/modeltime.resample/branch/master/graph/badge.svg)](https://codecov.io/gh/business-science/modeltime.resample?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/modeltime.resample)](https://CRAN.R-project.org/package=modeltime.resample)
 ![](http://cranlogs.r-pkg.org/badges/modeltime.resample?color=brightgreen)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/modeltime.resample?color=brightgreen)
+[![R-CMD-check](https://github.com/business-science/modeltime.resample/workflows/R-CMD-check/badge.svg)](https://github.com/business-science/modeltime.resample/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/business-science/modeltime.resample/branch/master/graph/badge.svg)](https://codecov.io/gh/business-science/modeltime.resample?branch=master)
 <!-- badges: end -->
 
 > **Model Performance and Stability Assessment Tools** for Single Time
@@ -48,11 +47,8 @@ the 6-Slice Time Series Cross Validation plan shown above.
 <div class="figure" style="text-align: center">
 
 <img src="man/figures/plotly_resample_error_plot.jpg" alt="Model Accuracy for 6 Time Series Resamples" width="100%" />
-
 <p class="caption">
-
 Model Accuracy for 6 Time Series Resamples
-
 </p>
 
 </div>
@@ -60,11 +56,8 @@ Model Accuracy for 6 Time Series Resamples
 <div class="figure" style="text-align: center">
 
 <img src="man/figures/gt_accuracy_table.jpg" alt="Resampled Model Accuracy (3 Models, 6 Resamples, 7 Time Series Groups)" width="80%" />
-
 <p class="caption">
-
 Resampled Model Accuracy (3 Models, 6 Resamples, 7 Time Series Groups)
-
 </p>
 
 </div>
@@ -120,21 +113,19 @@ High-Performance Forecasting Strategies then [take my
 course](https://university.business-science.io/p/ds4b-203-r-high-performance-time-series-forecasting).
 You will learn:
 
-  - Time Series Machine Learning (cutting-edge) with `Modeltime` - 30+
+-   Time Series Machine Learning (cutting-edge) with `Modeltime` - 30+
     Models (Prophet, ARIMA, XGBoost, Random Forest, & many more)
-  - NEW - Deep Learning with `GluonTS` (Competition Winners)
-  - Time Series Preprocessing, Noise Reduction, & Anomaly Detection
-  - Feature engineering using lagged variables & external regressors
-  - Hyperparameter Tuning
-  - Time series cross-validation
-  - Ensembling Multiple Machine Learning & Univariate Modeling
+-   NEW - Deep Learning with `GluonTS` (Competition Winners)
+-   Time Series Preprocessing, Noise Reduction, & Anomaly Detection
+-   Feature engineering using lagged variables & external regressors
+-   Hyperparameter Tuning
+-   Time series cross-validation
+-   Ensembling Multiple Machine Learning & Univariate Modeling
     Techniques (Competition Winner)
-  - Scalable Forecasting - Forecast 1000+ time series in parallel
-  - and more.
+-   Scalable Forecasting - Forecast 1000+ time series in parallel
+-   and more.
 
 <p class="text-center" style="font-size:30px;">
-
 <a href="https://university.business-science.io/p/ds4b-203-r-high-performance-time-series-forecasting">Unlock
 the High-Performance Time Series Forecasting Course</a>
-
 </p>
