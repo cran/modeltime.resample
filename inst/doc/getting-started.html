@@ -14,7 +14,19 @@
 
 <title>Getting Started with Modeltime Resample</title>
 
-<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -24,6 +36,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -125,7 +138,187 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -137,22 +330,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<h1 class="title toc-ignore">Getting Started with Modeltime Resample</h1>
+<h1 class="title toc-ignore">Getting Started with Modeltime
+Resample</h1>
 
 
 
-<p><strong>Modeltime Resample</strong> provide a convenient toolkit for efficiently evaluating multiple models across time, increasing our confidence in model selections.</p>
+<p><strong>Modeltime Resample</strong> provide a convenient toolkit for
+efficiently evaluating multiple models across time, increasing our
+confidence in model selections.</p>
 <ul>
-<li><strong>The core functionality</strong> is <code>modeltime_resample()</code>, which automates the iterative model fitting and prediction procedure.</li>
-<li><strong>A new plotting function</strong> <code>plot_modeltime_resamples()</code> provides a quick way to review model resample accuracy visually.</li>
-<li><strong>A new accuracy function</strong> <code>modeltime_resample_accuracy()</code> provides a flexible way for creating custom accuracy tables using customizable summary functions (e.g. mean, median, sd, min, max).</li>
+<li><strong>The core functionality</strong> is
+<code>modeltime_resample()</code>, which automates the iterative model
+fitting and prediction procedure.</li>
+<li><strong>A new plotting function</strong>
+<code>plot_modeltime_resamples()</code> provides a quick way to review
+model resample accuracy visually.</li>
+<li><strong>A new accuracy function</strong>
+<code>modeltime_resample_accuracy()</code> provides a flexible way for
+creating custom accuracy tables using customizable summary functions
+(e.g. mean, median, sd, min, max).</li>
 </ul>
 <div id="single-time-series" class="section level2">
 <h2>Single Time Series</h2>
 <blockquote>
-<p>Resampling gives us a way to <span style="color:blue">compare multiple models across time.</span></p>
+<p>Resampling gives us a way to <span style="color:blue">compare
+multiple models across time.</span></p>
 </blockquote>
-<p>In this tutorial, we’ll get you up to speed by evaluating multiple models using resampling of a single time series.</p>
+<p>In this tutorial, we’ll get you up to speed by evaluating multiple
+models using resampling of a single time series.</p>
 <div id="getting-started-setup" class="section level3">
 <h3>Getting Started Setup</h3>
 <p>Load the following R packages.</p>
@@ -168,7 +373,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="step-1---make-a-cross-validation-training-plan" class="section level3">
 <h3>Step 1 - Make a Cross-Validation Training Plan</h3>
-<p>We’ll use <code>timetk::time_series_cv()</code> to generate 4 time-series resamples.</p>
+<p>We’ll use <code>timetk::time_series_cv()</code> to generate 4
+time-series resamples.</p>
 <ul>
 <li>Assess is the assessment window: <code>&quot;2 years&quot;</code></li>
 <li>Initial is the training window: <code>&quot;5 years&quot;</code></li>
@@ -185,14 +391,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>resamples_tscv</span></code></pre></div>
 <pre><code>## # Time Series Cross Validation Plan 
-## # A tibble: 4 x 2
+## # A tibble: 4 × 2
 ##   splits          id    
 ##   &lt;list&gt;          &lt;chr&gt; 
 ## 1 &lt;split [60/24]&gt; Slice1
 ## 2 &lt;split [60/24]&gt; Slice2
 ## 3 &lt;split [60/24]&gt; Slice3
 ## 4 &lt;split [60/24]&gt; Slice4</code></pre>
-<p>Next, visualize the resample strategy to make sure we’re happy with our choices.</p>
+<p>Next, visualize the resample strategy to make sure we’re happy with
+our choices.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Begin with a Cross Validation Strategy</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>resamples_tscv <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tk_time_series_cv_plan</span>() <span class="sc">%&gt;%</span></span>
@@ -201,10 +408,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="step-2---make-a-modeltime-table" class="section level3">
 <h3>Step 2 - Make a Modeltime Table</h3>
-<p>Create models and add them to a <em>Modeltime Table</em> with <a href="https://business-science.github.io/modeltime/articles/getting-started-with-modeltime.html"><strong>Modeltime.</strong></a> I’ve already created 3 models (ARIMA, Prophet, and GLMNET) and saved the results as part of the <code>modeltime</code> package <code>m750_models</code>.</p>
+<p>Create models and add them to a <em>Modeltime Table</em> with <a href="https://business-science.github.io/modeltime/articles/getting-started-with-modeltime.html"><strong>Modeltime.</strong></a>
+I’ve already created 3 models (ARIMA, Prophet, and GLMNET) and saved the
+results as part of the <code>modeltime</code> package
+<code>m750_models</code>.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>m750_models</span></code></pre></div>
 <pre><code>## # Modeltime Table
-## # A tibble: 3 x 3
+## # A tibble: 3 × 3
 ##   .model_id .model     .model_desc            
 ##       &lt;int&gt; &lt;list&gt;     &lt;chr&gt;                  
 ## 1         1 &lt;workflow&gt; ARIMA(0,1,1)(0,1,1)[12]
@@ -213,11 +423,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="step-3---generate-resample-predictions" class="section level3">
 <h3>Step 3 - Generate Resample Predictions</h3>
-<p>Generate resample predictions using <code>modeltime_fit_resamples()</code>:</p>
+<p>Generate resample predictions using
+<code>modeltime_fit_resamples()</code>:</p>
 <ul>
-<li>Use the <code>m750_models</code> (models) and <code>m750_training_resamples</code></li>
-<li>Internally, each model is refit to each training set of the resamples</li>
-<li>A column is added to the <em>Modeltime Table</em>: <code>.resample_results</code> contains the resample predictions</li>
+<li>Use the <code>m750_models</code> (models) and
+<code>m750_training_resamples</code></li>
+<li>Internally, each model is refit to each training set of the
+resamples</li>
+<li>A column is added to the <em>Modeltime Table</em>:
+<code>.resample_results</code> contains the resample predictions</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>resamples_fitted <span class="ot">&lt;-</span> m750_models <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">modeltime_fit_resamples</span>(</span>
@@ -227,7 +441,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>resamples_fitted</span></code></pre></div>
 <pre><code>## # Modeltime Table
-## # A tibble: 3 x 4
+## # A tibble: 3 × 4
 ##   .model_id .model     .model_desc             .resample_results
 ##       &lt;int&gt; &lt;list&gt;     &lt;chr&gt;                   &lt;list&gt;           
 ## 1         1 &lt;workflow&gt; ARIMA(0,1,1)(0,1,1)[12] &lt;rsmp[+]&gt;        
@@ -238,10 +452,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>Step 4 - Evaluate the Results</h3>
 <div id="accuracy-plot" class="section level4">
 <h4>Accuracy Plot</h4>
-<p>Visualize the model resample accuracy using <code>plot_modeltime_resamples()</code>. Some observations:</p>
+<p>Visualize the model resample accuracy using
+<code>plot_modeltime_resamples()</code>. Some observations:</p>
 <ul>
-<li><strong>Overall:</strong> The ARIMA has the best overall performance, but it’s not always the best.</li>
-<li><strong>Slice 4:</strong> We can see that Slice 4 seems to be giving the models the most issue. The GLMNET model is relatively robust to Slice 4. Prophet gets thrown for a loop.</li>
+<li><strong>Overall:</strong> The ARIMA has the best overall
+performance, but it’s not always the best.</li>
+<li><strong>Slice 4:</strong> We can see that Slice 4 seems to be giving
+the models the most issue. The GLMNET model is relatively robust to
+Slice 4. Prophet gets thrown for a loop.</li>
 </ul>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>resamples_fitted <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot_modeltime_resamples</span>(</span>
@@ -253,15 +471,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="accuracy-table" class="section level4">
 <h4>Accuracy Table</h4>
-<p>We can compare the overall modeling approaches by evaluating the results with <code>modeltime_resample_accuracy()</code>. The default is to report the average <code>summary_fns = mean</code>, but this can be changed to any summary function or a list containing multiple summary functions (e.g. <code>summary_fns = list(mean = mean, sd = sd)</code>). From the table below, ARIMA has a 6% lower RMSE, indicating it’s the best choice for consistent performance on this dataset.</p>
+<p>We can compare the overall modeling approaches by evaluating the
+results with <code>modeltime_resample_accuracy()</code>. The default is
+to report the average <code>summary_fns = mean</code>, but this can be
+changed to any summary function or a list containing multiple summary
+functions (e.g. <code>summary_fns = list(mean = mean, sd = sd)</code>).
+From the table below, ARIMA has a 6% lower RMSE, indicating it’s the
+best choice for consistent performance on this dataset.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>resamples_fitted <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">modeltime_resample_accuracy</span>(<span class="at">summary_fns =</span> mean) <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">table_modeltime_accuracy</span>(<span class="at">.interactive =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div id="thojkebacz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#fpxzboobar .gt_table {
+#thojkebacz .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -286,7 +511,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#fpxzboobar .gt_heading {
+#thojkebacz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -298,33 +523,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#fpxzboobar .gt_title {
+#thojkebacz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
 
-#fpxzboobar .gt_subtitle {
+#thojkebacz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#fpxzboobar .gt_bottom_border {
+#thojkebacz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fpxzboobar .gt_col_headings {
+#thojkebacz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -339,7 +568,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#fpxzboobar .gt_col_heading {
+#thojkebacz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -359,7 +588,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#fpxzboobar .gt_column_spanner_outer {
+#thojkebacz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -371,28 +600,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#fpxzboobar .gt_column_spanner_outer:first-child {
+#thojkebacz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fpxzboobar .gt_column_spanner_outer:last-child {
+#thojkebacz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fpxzboobar .gt_column_spanner {
+#thojkebacz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#fpxzboobar .gt_group_heading {
-  padding: 8px;
+#thojkebacz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -413,7 +645,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#fpxzboobar .gt_empty_group_heading {
+#thojkebacz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -428,15 +660,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#fpxzboobar .gt_from_md > :first-child {
+#thojkebacz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fpxzboobar .gt_from_md > :last-child {
+#thojkebacz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fpxzboobar .gt_row {
+#thojkebacz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -455,7 +687,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#fpxzboobar .gt_stub {
+#thojkebacz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -464,10 +696,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#fpxzboobar .gt_summary_row {
+#thojkebacz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#thojkebacz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#thojkebacz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -477,17 +728,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#fpxzboobar .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
+#thojkebacz .gt_first_summary_row {
   border-top-style: solid;
-  border-top-width: 2px;
   border-top-color: #D3D3D3;
 }
 
-#fpxzboobar .gt_grand_summary_row {
+#thojkebacz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#thojkebacz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#thojkebacz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -497,7 +757,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#fpxzboobar .gt_first_grand_summary_row {
+#thojkebacz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -507,11 +767,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#fpxzboobar .gt_striped {
+#thojkebacz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fpxzboobar .gt_table_body {
+#thojkebacz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -520,7 +780,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#fpxzboobar .gt_footnotes {
+#thojkebacz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -534,13 +794,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#fpxzboobar .gt_footnote {
+#thojkebacz .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#fpxzboobar .gt_sourcenotes {
+#thojkebacz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -554,60 +817,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#fpxzboobar .gt_sourcenote {
+#thojkebacz .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#fpxzboobar .gt_left {
+#thojkebacz .gt_left {
   text-align: left;
 }
 
-#fpxzboobar .gt_center {
+#thojkebacz .gt_center {
   text-align: center;
 }
 
-#fpxzboobar .gt_right {
+#thojkebacz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fpxzboobar .gt_font_normal {
+#thojkebacz .gt_font_normal {
   font-weight: normal;
 }
 
-#fpxzboobar .gt_font_bold {
+#thojkebacz .gt_font_bold {
   font-weight: bold;
 }
 
-#fpxzboobar .gt_font_italic {
+#thojkebacz .gt_font_italic {
   font-style: italic;
 }
 
-#fpxzboobar .gt_super {
+#thojkebacz .gt_super {
   font-size: 65%;
 }
 
-#fpxzboobar .gt_footnote_marks {
+#thojkebacz .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#thojkebacz .gt_footnote_marks {
   font-style: italic;
-  font-size: 65%;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#thojkebacz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#thojkebacz .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#thojkebacz .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#thojkebacz .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
-<div id="fpxzboobar" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<table class="gt_table">
   <thead class="gt_header">
     <tr>
-      <th colspan="10" class="gt_heading gt_title gt_font_normal" style>Accuracy Table</th>
+      <th colspan="10" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Accuracy Table</th>
     </tr>
-    <tr>
-      <th colspan="10" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
-    </tr>
+    
   </thead>
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">.model_id</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">.model_id</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">.model_desc</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">.type</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">n</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">n</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">mae</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">mape</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">mase</th>
@@ -617,53 +915,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr>
-      <td class="gt_row gt_center">1</td>
-      <td class="gt_row gt_left">ARIMA(0,1,1)(0,1,1)[12]</td>
-      <td class="gt_row gt_left">Resamples</td>
-      <td class="gt_row gt_center">4</td>
-      <td class="gt_row gt_right">421.78</td>
-      <td class="gt_row gt_right">4.11</td>
-      <td class="gt_row gt_right">1.64</td>
-      <td class="gt_row gt_right">4.15</td>
-      <td class="gt_row gt_right">490.88</td>
-      <td class="gt_row gt_right">0.77</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_center">2</td>
-      <td class="gt_row gt_left">PROPHET</td>
-      <td class="gt_row gt_left">Resamples</td>
-      <td class="gt_row gt_center">4</td>
-      <td class="gt_row gt_right">443.09</td>
-      <td class="gt_row gt_right">4.34</td>
-      <td class="gt_row gt_right">1.77</td>
-      <td class="gt_row gt_right">4.41</td>
-      <td class="gt_row gt_right">520.80</td>
-      <td class="gt_row gt_right">0.71</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_center">3</td>
-      <td class="gt_row gt_left">GLMNET</td>
-      <td class="gt_row gt_left">Resamples</td>
-      <td class="gt_row gt_center">4</td>
-      <td class="gt_row gt_right">451.48</td>
-      <td class="gt_row gt_right">4.42</td>
-      <td class="gt_row gt_right">1.71</td>
-      <td class="gt_row gt_right">4.48</td>
-      <td class="gt_row gt_right">522.40</td>
-      <td class="gt_row gt_right">0.81</td>
-    </tr>
+    <tr><td class="gt_row gt_right">1</td>
+<td class="gt_row gt_left">ARIMA(0,1,1)(0,1,1)[12]</td>
+<td class="gt_row gt_left">Resamples</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">421.78</td>
+<td class="gt_row gt_right">4.11</td>
+<td class="gt_row gt_right">1.64</td>
+<td class="gt_row gt_right">4.15</td>
+<td class="gt_row gt_right">490.88</td>
+<td class="gt_row gt_right">0.77</td></tr>
+    <tr><td class="gt_row gt_right">2</td>
+<td class="gt_row gt_left">PROPHET</td>
+<td class="gt_row gt_left">Resamples</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">443.09</td>
+<td class="gt_row gt_right">4.34</td>
+<td class="gt_row gt_right">1.77</td>
+<td class="gt_row gt_right">4.41</td>
+<td class="gt_row gt_right">520.80</td>
+<td class="gt_row gt_right">0.71</td></tr>
+    <tr><td class="gt_row gt_right">3</td>
+<td class="gt_row gt_left">GLMNET</td>
+<td class="gt_row gt_left">Resamples</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">451.48</td>
+<td class="gt_row gt_right">4.42</td>
+<td class="gt_row gt_right">1.71</td>
+<td class="gt_row gt_right">4.48</td>
+<td class="gt_row gt_right">522.40</td>
+<td class="gt_row gt_right">0.81</td></tr>
   </tbody>
   
   
-</table></div>
+</table>
+</div>
 </div>
 </div>
 </div>
 <div id="wrapup" class="section level1">
 <h1>Wrapup</h1>
-<p>Resampling gives us a way to compare multiple models across time. In this example, we can see that the ARIMA model performs better than the Prophet and GLMNET models with a lower RMSE. This won’t always be the case (every time series is different).</p>
-<p>This is a quick overview of Getting Started with Modeltime Resample. To learn how to tune, ensemble, and work with multiple groups of Time Series, take my <a href="https://university.business-science.io/p/ds4b-203-r-high-performance-time-series-forecasting/">High-Performance Time Series Course.</a></p>
+<p>Resampling gives us a way to compare multiple models across time. In
+this example, we can see that the ARIMA model performs better than the
+Prophet and GLMNET models with a lower RMSE. This won’t always be the
+case (every time series is different).</p>
+<p>This is a quick overview of Getting Started with Modeltime Resample.
+To learn how to tune, ensemble, and work with multiple groups of Time
+Series, take my <a href="https://university.business-science.io/p/ds4b-203-r-high-performance-time-series-forecasting/">High-Performance
+Time Series Course.</a></p>
 </div>
 
 

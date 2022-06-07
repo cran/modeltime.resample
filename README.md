@@ -11,7 +11,7 @@ status](https://www.r-pkg.org/badges/version/modeltime.resample)](https://CRAN.R
 ![](http://cranlogs.r-pkg.org/badges/grand-total/modeltime.resample?color=brightgreen)
 [![R-CMD-check](https://github.com/business-science/modeltime.resample/workflows/R-CMD-check/badge.svg)](https://github.com/business-science/modeltime.resample/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/business-science/modeltime.resample/branch/master/graph/badge.svg)](https://codecov.io/gh/business-science/modeltime.resample?branch=master)
+coverage](https://codecov.io/gh/business-science/modeltime.resample/branch/master/graph/badge.svg)](https://app.codecov.io/gh/business-science/modeltime.resample?branch=master)
 <!-- badges: end -->
 
 > **Model Performance and Stability Assessment Tools** for Single Time
@@ -23,7 +23,21 @@ time series, panel data, and cross-sectional time series analysis.
 
 <img src="man/figures/cross_validation_plan.jpg" width="100%" style="display: block; margin: auto;" />
 
-## Benefits: What Modeltime Resample Does
+## Installation
+
+CRAN version:
+
+``` r
+install.packages("modeltime.resample")
+```
+
+Development version (latest features):
+
+``` r
+remotes::install_github("business-science/modeltime.resample")
+```
+
+## Why Modeltime Resample?
 
 Resampling time series is an important strategy to **evaluate the
 stability of models over time.** However, it’s a pain to do this because
@@ -44,38 +58,9 @@ where we can see that Prophet Boost and XGBoost Models outperform
 Prophet with Regressors for the Walmart Time Series Panel Dataset using
 the 6-Slice Time Series Cross Validation plan shown above.
 
-<div class="figure" style="text-align: center">
+<img src="man/figures/plotly_resample_error_plot.jpg" title="Model Accuracy for 6 Time Series Resamples" alt="Model Accuracy for 6 Time Series Resamples" width="100%" style="display: block; margin: auto;" />
 
-<img src="man/figures/plotly_resample_error_plot.jpg" alt="Model Accuracy for 6 Time Series Resamples" width="100%" />
-<p class="caption">
-Model Accuracy for 6 Time Series Resamples
-</p>
-
-</div>
-
-<div class="figure" style="text-align: center">
-
-<img src="man/figures/gt_accuracy_table.jpg" alt="Resampled Model Accuracy (3 Models, 6 Resamples, 7 Time Series Groups)" width="80%" />
-<p class="caption">
-Resampled Model Accuracy (3 Models, 6 Resamples, 7 Time Series Groups)
-</p>
-
-</div>
-
-## Installation
-
-Install the CRAN version:
-
-``` r
-# Not on CRAN yet
-# install.packages("modeltime.resample")
-```
-
-Or, install the development version:
-
-``` r
-remotes::install_github("business-science/modeltime.resample")
-```
+<img src="man/figures/gt_accuracy_table.jpg" title="Resampled Model Accuracy (3 Models, 6 Resamples, 7 Time Series Groups)" alt="Resampled Model Accuracy (3 Models, 6 Resamples, 7 Time Series Groups)" width="80%" style="display: block; margin: auto;" />
 
 ## Getting Started
 
@@ -90,42 +75,78 @@ remotes::install_github("business-science/modeltime.resample")
     An advanced tutorial on resample evaluation with **multiple time
     series groups (Panel Data)**
 
-## Learning More
+## Meet the modeltime ecosystem
 
-[*My Talk on High-Performance Time Series
-Forecasting*](https://youtu.be/elQb4VzRINg)
+> Learn a growing ecosystem of forecasting packages
 
-<a href="https://www.youtube.com/embed/elQb4VzRINg" target="_blank"><img src="http://img.youtube.com/vi/elQb4VzRINg/0.jpg" alt="Anomalize" width="100%" height="450"/></a>
+<img src="man/figures/modeltime_ecosystem.jpg" title="The modeltime ecosystem is growing" alt="The modeltime ecosystem is growing" width="100%" style="display: block; margin: auto;" />
+
+Modeltime is part of a **growing ecosystem** of Modeltime forecasting
+packages.
+
+-   [Modeltime (Machine
+    Learning)](https://business-science.github.io/modeltime/)
+
+-   [Modeltime H2O
+    (AutoML)](https://business-science.github.io/modeltime.h2o/)
+
+-   [Modeltime GluonTS (Deep
+    Learning)](https://business-science.github.io/modeltime.gluonts/)
+
+-   [Modeltime Ensemble (Blending
+    Forecasts)](https://business-science.github.io/modeltime.ensemble/)
+
+-   [Modeltime Resample
+    (Backtesting)](https://business-science.github.io/modeltime.resample/)
+
+-   [Timetk (Feature Engineering, Data Wrangling, Time Series
+    Visualization)](https://business-science.github.io/timetk/)
+
+## Take the High-Performance Forecasting Course
+
+> Become the forecasting expert for your organization
+
+<a href="https://university.business-science.io/p/ds4b-203-r-high-performance-time-series-forecasting/" target="_blank"><img src="https://www.filepicker.io/api/file/bKyqVAi5Qi64sS05QYLk" alt="High-Performance Time Series Forecasting Course" width="100%" style="box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);"/></a>
+
+[*High-Performance Time Series
+Course*](https://university.business-science.io/p/ds4b-203-r-high-performance-time-series-forecasting/)
+
+### Time Series is Changing
 
 Time series is changing. **Businesses now need 10,000+ time series
 forecasts every day.** This is what I call a *High-Performance Time
 Series Forecasting System (HPTSF)* - Accurate, Robust, and Scalable
 Forecasting.
 
-**High-Performance Forecasting Systems will save companies MILLIONS of
-dollars.** Imagine what will happen to your career if you can provide
-your organization a “High-Performance Time Series Forecasting System”
-(HPTSF System).
+**High-Performance Forecasting Systems will save companies by improving
+accuracy and scalability.** Imagine what will happen to your career if
+you can provide your organization a “High-Performance Time Series
+Forecasting System” (HPTSF System).
 
-I teach how to build a HPTFS System in my **High-Performance Time Series
-Forecasting Course**. If interested in learning Scalable
-High-Performance Forecasting Strategies then [take my
-course](https://university.business-science.io/p/ds4b-203-r-high-performance-time-series-forecasting).
+### How to Learn High-Performance Time Series Forecasting
+
+I teach how to build a HPTFS System in my [**High-Performance Time
+Series Forecasting
+Course**](https://university.business-science.io/p/ds4b-203-r-high-performance-time-series-forecasting).
 You will learn:
 
--   Time Series Machine Learning (cutting-edge) with `Modeltime` - 30+
-    Models (Prophet, ARIMA, XGBoost, Random Forest, & many more)
--   NEW - Deep Learning with `GluonTS` (Competition Winners)
--   Time Series Preprocessing, Noise Reduction, & Anomaly Detection
--   Feature engineering using lagged variables & external regressors
--   Hyperparameter Tuning
--   Time series cross-validation
--   Ensembling Multiple Machine Learning & Univariate Modeling
+-   **Time Series Machine Learning** (cutting-edge) with `Modeltime` -
+    30+ Models (Prophet, ARIMA, XGBoost, Random Forest, & many more)
+-   **Deep Learning** with `GluonTS` (Competition Winners)
+-   **Time Series Preprocessing**, Noise Reduction, & Anomaly Detection
+-   **Feature engineering** using lagged variables & external regressors
+-   **Hyperparameter Tuning**
+-   **Time series cross-validation**
+-   **Ensembling** Multiple Machine Learning & Univariate Modeling
     Techniques (Competition Winner)
--   Scalable Forecasting - Forecast 1000+ time series in parallel
+-   **Scalable Forecasting** - Forecast 1000+ time series in parallel
 -   and more.
 
+<p class="text-center" style="font-size:24px;">
+Become the Time Series Expert for your organization.
+</p>
+<br>
 <p class="text-center" style="font-size:30px;">
-<a href="https://university.business-science.io/p/ds4b-203-r-high-performance-time-series-forecasting">Unlock
+<a href="https://university.business-science.io/p/ds4b-203-r-high-performance-time-series-forecasting">Take
 the High-Performance Time Series Forecasting Course</a>
 </p>
