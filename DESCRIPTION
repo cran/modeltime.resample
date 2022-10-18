@@ -1,6 +1,6 @@
 Package: modeltime.resample
 Title: Resampling Tools for Time Series Forecasting
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: c(
     person("Matt", "Dancho", email = "mdancho@business-science.io", role = c("aut", "cre")),
     person("Business Science", role = "cph")
@@ -21,12 +21,12 @@ Imports: tune, rsample, workflows, parsnip (>= 0.1.4), recipes, dials,
         rlang (>= 0.1.2), progressr, tictoc, hardhat
 Suggests: roxygen2, testthat, tidymodels, tidyverse, tidyquant, glmnet,
         lubridate, knitr, rmarkdown, covr, remotes
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2022-06-07 12:58:58 UTC; mdancho
+Packaged: 2022-10-18 00:28:20 UTC; mdancho
 Author: Matt Dancho [aut, cre],
   Business Science [cph]
 Maintainer: Matt Dancho <mdancho@business-science.io>
 Repository: CRAN
-Date/Publication: 2022-06-07 14:30:03 UTC
+Date/Publication: 2022-10-18 03:00:06 UTC

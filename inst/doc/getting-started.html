@@ -120,13 +120,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -481,12 +488,12 @@ best choice for consistent performance on this dataset.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>resamples_fitted <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">modeltime_resample_accuracy</span>(<span class="at">summary_fns =</span> mean) <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">table_modeltime_accuracy</span>(<span class="at">.interactive =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<div id="thojkebacz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="hjhibadull" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#thojkebacz .gt_table {
+#hjhibadull .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -511,7 +518,7 @@ best choice for consistent performance on this dataset.</p>
   border-left-color: #D3D3D3;
 }
 
-#thojkebacz .gt_heading {
+#hjhibadull .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -523,7 +530,7 @@ best choice for consistent performance on this dataset.</p>
   border-right-color: #D3D3D3;
 }
 
-#thojkebacz .gt_title {
+#hjhibadull .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -535,7 +542,7 @@ best choice for consistent performance on this dataset.</p>
   border-bottom-width: 0;
 }
 
-#thojkebacz .gt_subtitle {
+#hjhibadull .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -547,13 +554,13 @@ best choice for consistent performance on this dataset.</p>
   border-top-width: 0;
 }
 
-#thojkebacz .gt_bottom_border {
+#hjhibadull .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#thojkebacz .gt_col_headings {
+#hjhibadull .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -568,7 +575,7 @@ best choice for consistent performance on this dataset.</p>
   border-right-color: #D3D3D3;
 }
 
-#thojkebacz .gt_col_heading {
+#hjhibadull .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -588,7 +595,7 @@ best choice for consistent performance on this dataset.</p>
   overflow-x: hidden;
 }
 
-#thojkebacz .gt_column_spanner_outer {
+#hjhibadull .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -600,15 +607,15 @@ best choice for consistent performance on this dataset.</p>
   padding-right: 4px;
 }
 
-#thojkebacz .gt_column_spanner_outer:first-child {
+#hjhibadull .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#thojkebacz .gt_column_spanner_outer:last-child {
+#hjhibadull .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#thojkebacz .gt_column_spanner {
+#hjhibadull .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -620,7 +627,7 @@ best choice for consistent performance on this dataset.</p>
   width: 100%;
 }
 
-#thojkebacz .gt_group_heading {
+#hjhibadull .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -645,7 +652,7 @@ best choice for consistent performance on this dataset.</p>
   vertical-align: middle;
 }
 
-#thojkebacz .gt_empty_group_heading {
+#hjhibadull .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -660,15 +667,15 @@ best choice for consistent performance on this dataset.</p>
   vertical-align: middle;
 }
 
-#thojkebacz .gt_from_md > :first-child {
+#hjhibadull .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#thojkebacz .gt_from_md > :last-child {
+#hjhibadull .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#thojkebacz .gt_row {
+#hjhibadull .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -687,7 +694,7 @@ best choice for consistent performance on this dataset.</p>
   overflow-x: hidden;
 }
 
-#thojkebacz .gt_stub {
+#hjhibadull .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -700,7 +707,7 @@ best choice for consistent performance on this dataset.</p>
   padding-right: 5px;
 }
 
-#thojkebacz .gt_stub_row_group {
+#hjhibadull .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -714,11 +721,11 @@ best choice for consistent performance on this dataset.</p>
   vertical-align: top;
 }
 
-#thojkebacz .gt_row_group_first td {
+#hjhibadull .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#thojkebacz .gt_summary_row {
+#hjhibadull .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -728,16 +735,16 @@ best choice for consistent performance on this dataset.</p>
   padding-right: 5px;
 }
 
-#thojkebacz .gt_first_summary_row {
+#hjhibadull .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#thojkebacz .gt_first_summary_row.thick {
+#hjhibadull .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#thojkebacz .gt_last_summary_row {
+#hjhibadull .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -747,7 +754,7 @@ best choice for consistent performance on this dataset.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#thojkebacz .gt_grand_summary_row {
+#hjhibadull .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -757,7 +764,7 @@ best choice for consistent performance on this dataset.</p>
   padding-right: 5px;
 }
 
-#thojkebacz .gt_first_grand_summary_row {
+#hjhibadull .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -767,11 +774,11 @@ best choice for consistent performance on this dataset.</p>
   border-top-color: #D3D3D3;
 }
 
-#thojkebacz .gt_striped {
+#hjhibadull .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#thojkebacz .gt_table_body {
+#hjhibadull .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -780,7 +787,7 @@ best choice for consistent performance on this dataset.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#thojkebacz .gt_footnotes {
+#hjhibadull .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -794,7 +801,7 @@ best choice for consistent performance on this dataset.</p>
   border-right-color: #D3D3D3;
 }
 
-#thojkebacz .gt_footnote {
+#hjhibadull .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -803,7 +810,7 @@ best choice for consistent performance on this dataset.</p>
   padding-right: 5px;
 }
 
-#thojkebacz .gt_sourcenotes {
+#hjhibadull .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -817,7 +824,7 @@ best choice for consistent performance on this dataset.</p>
   border-right-color: #D3D3D3;
 }
 
-#thojkebacz .gt_sourcenote {
+#hjhibadull .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -825,93 +832,86 @@ best choice for consistent performance on this dataset.</p>
   padding-right: 5px;
 }
 
-#thojkebacz .gt_left {
+#hjhibadull .gt_left {
   text-align: left;
 }
 
-#thojkebacz .gt_center {
+#hjhibadull .gt_center {
   text-align: center;
 }
 
-#thojkebacz .gt_right {
+#hjhibadull .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#thojkebacz .gt_font_normal {
+#hjhibadull .gt_font_normal {
   font-weight: normal;
 }
 
-#thojkebacz .gt_font_bold {
+#hjhibadull .gt_font_bold {
   font-weight: bold;
 }
 
-#thojkebacz .gt_font_italic {
+#hjhibadull .gt_font_italic {
   font-style: italic;
 }
 
-#thojkebacz .gt_super {
+#hjhibadull .gt_super {
   font-size: 65%;
 }
 
-#thojkebacz .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
-#thojkebacz .gt_footnote_marks {
+#hjhibadull .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#thojkebacz .gt_asterisk {
+#hjhibadull .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#thojkebacz .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#hjhibadull .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#thojkebacz .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#hjhibadull .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#thojkebacz .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#hjhibadull .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hjhibadull .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hjhibadull .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   <thead class="gt_header">
     <tr>
-      <th colspan="10" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Accuracy Table</th>
+      <td colspan="10" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Accuracy Table</td>
     </tr>
     
   </thead>
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">.model_id</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">.model_desc</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">.type</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">n</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">mae</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">mape</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">mase</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">smape</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">rmse</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">rsq</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">.model_id</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">.model_desc</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">.type</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">n</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">mae</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">mape</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">mase</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">smape</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">rmse</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">rsq</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
