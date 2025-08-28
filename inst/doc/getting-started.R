@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
     message = FALSE,
     warning = FALSE,
@@ -9,11 +9,11 @@ knitr::opts_chunk$set(
     dpi = 100
 )
 
-## -----------------------------------------------------------------------------
+## ----echo=FALSE,include=FALSE-------------------------------------------------
 library(tidymodels)
 library(modeltime)
 library(modeltime.resample)
-library(tidyverse)
+library(dplyr)
 library(timetk)
 
 ## -----------------------------------------------------------------------------

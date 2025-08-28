@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
     message = FALSE,
     warning = FALSE,
@@ -9,12 +9,12 @@ knitr::opts_chunk$set(
     dpi = 100
 )
 
-## ----setup--------------------------------------------------------------------
+## ----setup,echo=FALSE,include=FALSE-------------------------------------------
 library(tidymodels)
 library(modeltime)
 library(modeltime.resample)
 library(timetk)
-library(tidyverse)
+library(dplyr)
 library(tidyquant)
 
 ## -----------------------------------------------------------------------------
@@ -37,7 +37,7 @@ full_data_tbl <- walmart_sales_weekly %>%
   ungroup() %>%
   
   # Consolidate IDs
-  mutate(id = fct_drop(id))
+  mutate(id = droplevels(id))
 
 # Training Data
 data_prepared_tbl <- full_data_tbl %>%
@@ -125,7 +125,7 @@ forecast_panel_tbl <- calibration_tbl %>%
     keep_data = TRUE
   ) 
 
-## ---- fig.cap="Panel Forecasting | 7 Time Series Groups"----------------------
+## ----fig.cap="Panel Forecasting | 7 Time Series Groups"-----------------------
 forecast_panel_tbl %>%
   group_by(id) %>%
   plot_modeltime_forecast(
@@ -135,16 +135,16 @@ forecast_panel_tbl %>%
     .title       = "Panel Forecasting | 7 Time Series Groups"
   )
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  resample_results <- model_tbl %>%
 #    modeltime_fit_resamples(
 #      resamples = walmart_tscv,
 #      control   = control_resamples(verbose = FALSE)
 #    )
 
-## ---- echo=FALSE--------------------------------------------------------------
-# write_rds(resample_results, "resample_results.rds")
-resample_results <- read_rds("resample_results.rds")
+## ----echo=FALSE---------------------------------------------------------------
+# saveRDS(resample_results, "resample_results.rds")
+resample_results <- readRDS("resample_results.rds")
 
 ## -----------------------------------------------------------------------------
 resample_results
