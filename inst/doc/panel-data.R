@@ -135,16 +135,12 @@ forecast_panel_tbl %>%
     .title       = "Panel Forecasting | 7 Time Series Groups"
   )
 
-## ----eval = FALSE-------------------------------------------------------------
-#  resample_results <- model_tbl %>%
-#    modeltime_fit_resamples(
-#      resamples = walmart_tscv,
-#      control   = control_resamples(verbose = FALSE)
-#    )
-
-## ----echo=FALSE---------------------------------------------------------------
-# saveRDS(resample_results, "resample_results.rds")
-resample_results <- readRDS("resample_results.rds")
+## ----eval = TRUE--------------------------------------------------------------
+resample_results <- model_tbl %>%
+  modeltime_fit_resamples(
+    resamples = walmart_tscv,
+    control   = control_resamples(verbose = FALSE)
+  )
 
 ## -----------------------------------------------------------------------------
 resample_results
